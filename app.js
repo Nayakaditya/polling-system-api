@@ -1,4 +1,5 @@
 // +++++++++++++++++++++++++++ IMPORT AND SETUP MODULES ++++++++++++++++++++++++++ //
+
 require("dotenv").config(); // configuration for dotenv file
 const express = require("express"); // Importing express for making API endpoints and making HTTP requests.
 const { PORT, SESSION_SECRET } = process.env;
@@ -6,7 +7,7 @@ require("./configs/mongoose");
 const session = require("express-session");
 const app = express(); // creating our express app here
 
-// ++++++++++++++++++++++++++++++ USING MIDDLEWARE FROM HERE ++++++++++++++++++++++++++++++ //
+// +++++++++++++++++++++++ USING MIDDLEWARE FROM HERE +++++++++++++++++++++++++ //
 
 app.use(express.json()); // using this to parse json
 
