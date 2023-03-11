@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+
+// Creating a Schema for Option
 const optionSchema = new mongoose.Schema(
   {
     title: {
@@ -21,8 +23,10 @@ const optionSchema = new mongoose.Schema(
   }
 );
 
+// app url from .evn file
 const { APP_URL } = process.env;
 
+// before save the schema I want to generate a link to vote for the option
 optionSchema.pre("save", function (next) {
   if (!this.link_to_vote) {
     this.link_to_vote = `${APP_URL}/api/v1/options/${this._id}/add_vote`;
@@ -30,6 +34,7 @@ optionSchema.pre("save", function (next) {
   next();
 });
 
+// mongoose model using Option schema
 const Option = mongoose.model("Option", optionSchema);
 
-module.exports = Option;
+module.exports = Option; // exporting to use in another modules
